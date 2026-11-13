@@ -14,6 +14,15 @@ export default function ScratchCard({
   const last = useRef(null)
   const checking = useRef(false)
   const scratched = useRef(false)
+  const fired = useRef(false)
+
+  // Reveal exactly once, no matter how many taps follow.
+  const reveal = () => {
+    if (fired.current) return
+    fired.current = true
+    setRevealed(true)
+    onRevealed?.()
+  }
 
   useEffect(() => {
     const el = wrap.current
@@ -22,8 +31,7 @@ export default function ScratchCard({
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) {
-      setRevealed(true)
-      onRevealed?.()
+      reveal()
       return
     }
 
@@ -111,7 +119,7 @@ export default function ScratchCard({
     }
 
     const checkPct = () => {
-      if (checking.current) return
+      if (fired.current || checking.current) return
       checking.current = true
       requestAnimationFrame(() => {
         try {
@@ -123,10 +131,7 @@ export default function ScratchCard({
             if (d[i] < 20) clear++
             n++
           }
-          if (n && clear / n >= threshold) {
-            setRevealed(true)
-            onRevealed?.()
-          }
+          if (n && clear / n >= threshold) reveal()
         } catch (_) {
           /* ignore */
         }
@@ -135,6 +140,7 @@ export default function ScratchCard({
     }
 
     const down = (e) => {
+      if (fired.current) return
       drawing.current = true
       scratched.current = true
       last.current = pos(e)
@@ -149,6 +155,7 @@ export default function ScratchCard({
       checkPct()
     }
     const up = () => {
+      if (!drawing.current) return
       drawing.current = false
       last.current = null
       checkPct()
