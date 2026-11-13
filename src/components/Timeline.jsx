@@ -25,10 +25,17 @@ export default function Timeline() {
   const [active, setActive] = useState(0)
 
   // Size cards from viewport height so the whole section always fits one screen
+  // On phones the address bar shows/hides on every touch, which fires
+  // `resize` with only the height changed — ignore those, or the cards
+  // (and everything sized from them) jitter mid-scroll.
   useEffect(() => {
+    const touch = window.matchMedia('(hover: none)').matches
+    let lastW = 0
     const onResize = () => {
-      const h = window.innerHeight
       const w = window.innerWidth
+      if (touch && lastW && w === lastW) return
+      lastW = w
+      const h = window.innerHeight
       let cardH = Math.round(Math.min(430, Math.max(240, h * 0.44)))
       let cardW = Math.round(cardH / 1.42)
       const maxW = w * 0.62
@@ -36,7 +43,7 @@ export default function Timeline() {
         cardW = Math.round(maxW)
         cardH = Math.round(cardW * 1.42)
       }
-      setMetrics({ cardW, cardH })
+      setMetrics((m) => (m.cardW === cardW && m.cardH === cardH ? m : { cardW, cardH }))
     }
     onResize()
     window.addEventListener('resize', onResize)
@@ -62,6 +69,8 @@ export default function Timeline() {
   }, [])
 
   // Scroll drives the sequence — the WHOLE section is pinned so nothing drifts.
+  // Created once: killing/re-creating a pin removes its spacer for a moment,
+  // the page gets shorter, and the browser yanks the scroll back up here.
   useEffect(() => {
     const N = events.length
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -80,7 +89,7 @@ export default function Timeline() {
       },
     })
     return () => st.kill()
-  }, [metrics])
+  }, [])
 
   // Render loop
   useEffect(() => {

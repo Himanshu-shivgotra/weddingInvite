@@ -4,6 +4,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
+// Don't recalculate every trigger when the mobile address bar shows/hides.
+ScrollTrigger.config({ ignoreMobileResize: true })
 
 export function useSmoothScroll(enabled = true) {
   useEffect(() => {
