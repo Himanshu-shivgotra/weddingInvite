@@ -173,17 +173,14 @@ export default function Timeline() {
           <AnimatePresence mode="wait">
             <motion.div
               key={current.key}
-              initial={{ opacity: 0, scale: 0.72, y: 14, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, scale: 1.14, y: -12, filter: 'blur(8px)' }}
+              initial={{ opacity: 0, scale: 0.8, y: 14 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.1, y: -12 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="text-center"
             >
-              <p
-                className="font-title text-[0.58rem] uppercase tracking-[0.4em]"
-                style={{ color: current.accent }}
-              >
-                {current.weekday}
+              <p className="font-title text-[0.58rem] uppercase tracking-[0.4em] text-lightgold/90">
+                {datesOn ? current.weekday : 'Scratch the card to see dates'}
               </p>
               <p className="gold-text animate-shimmer mt-0.5 font-display text-2xl font-semibold tracking-[0.12em] md:text-3xl">
                 {datesOn ? current.dateLabel : 'Save the Date'}
@@ -237,7 +234,7 @@ export default function Timeline() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.4 }}
-              className="mx-auto max-w-xl font-quote text-base italic leading-relaxed text-cream/85 md:text-lg"
+              className="mx-auto max-w-xl font-quote text-lg italic leading-relaxed text-cream md:text-xl"
             >
               {current.blurb}
             </motion.p>

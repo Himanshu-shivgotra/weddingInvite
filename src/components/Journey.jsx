@@ -78,18 +78,18 @@ export default function Journey() {
             <motion.h2
               initial="hide" whileInView="show" viewport={{ once: true }}
               variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } }}
-              className="mt-2 flex justify-center overflow-hidden font-script leading-[1.02]"
+              className="mt-2 flex justify-center overflow-hidden px-4 pb-3 pt-1 font-script leading-[1.1]"
               style={{ fontSize: 'clamp(3.2rem, 9vw, 6.5rem)' }}
             >
               {'Together'.split('').map((l, i) => (
-                <motion.span key={i} variants={{ hide: { y: '115%', opacity: 0, rotate: 8 }, show: { y: '0%', opacity: 1, rotate: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="gold-text inline-block">{l}</motion.span>
+                <motion.span key={i} variants={{ hide: { y: '115%', opacity: 0, rotate: 8 }, show: { y: '0%', opacity: 1, rotate: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block text-[#ecd08a] [text-shadow:0_2px_18px_rgba(0,0,0,0.55),0_0_28px_rgba(230,200,120,0.25)]">{l}</motion.span>
               ))}
             </motion.h2>
-            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6, duration: 0.8 }} className="mt-2 font-quote text-xl italic text-cream/85 md:text-2xl">
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6, duration: 0.8 }} className="mt-1 font-quote text-xl italic text-cream md:text-2xl">
               two hearts, one journey
             </motion.p>
             <Divider className="mx-auto my-6" />
-            <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.7 }} className="mx-auto max-w-xs font-body text-sm leading-relaxed text-cream/70">
+            <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2, duration: 0.7 }} className="mx-auto max-w-xs font-body text-sm leading-relaxed text-cream/85">
               From a first hello to a lifetime promise — two families, two cities, one beautiful beginning.
             </motion.p>
           </div>

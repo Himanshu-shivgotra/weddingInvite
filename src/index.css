@@ -3,7 +3,24 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: dark only;
+}
+
+/* The design is the same in light and dark mode. Declaring the dark rules
+   explicitly stops Chrome/Samsung "auto dark" from repainting the page. */
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: #3b0a16;
+    color: #fbf3e4;
+  }
+}
+@media (prefers-color-scheme: light) {
+  html,
+  body {
+    background: #3b0a16;
+    color: #fbf3e4;
+  }
 }
 
 * {
@@ -56,20 +73,21 @@ html.lenis body {
   }
 
   .gold-text {
+    color: #ecd08a; /* fallback if background-clip:text is unsupported */
     background: linear-gradient(
       100deg,
-      #8a6a2a 0%,
-      #c9a24b 20%,
-      #f4e3a1 45%,
-      #e6c878 55%,
-      #c9a24b 75%,
-      #8a6a2a 100%
+      #c9a24b 0%,
+      #e6c878 22%,
+      #fbf0c4 45%,
+      #f4dc95 55%,
+      #e6c878 78%,
+      #c9a24b 100%
     );
     background-size: 200% auto;
+    background-position: 50% center;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
   }
 
   .gold-line {

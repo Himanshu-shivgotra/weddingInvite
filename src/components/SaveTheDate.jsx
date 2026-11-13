@@ -37,7 +37,7 @@ export default function SaveTheDate({ onReveal }) {
               <motion.p
                 key="hint"
                 exit={{ opacity: 0, y: -8 }}
-                className="mb-4 font-body text-xs text-cream/70 md:text-sm"
+                className="mb-4 font-body text-xs text-cream/85 md:text-sm"
               >
                 Scratch the golden foil with your finger to uncover the day.
               </motion.p>
