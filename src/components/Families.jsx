@@ -14,7 +14,7 @@ function Card({ role, name, parents, city, delay }) {
     >
       <Sparkle className="mb-5 h-6 w-6 text-gold/70" />
       <p className="eyebrow">{role}</p>
-      <h3 className="mt-3 font-script text-5xl text-[#ecd08a] md:text-6xl">
+      <h3 className="mt-3 font-script text-5xl text-[#f3d98f] md:text-6xl">
         {name}
       </h3>
       <p className="mt-1 font-body text-[0.7rem] uppercase tracking-[0.3em] text-lightgold">
@@ -54,7 +54,7 @@ export default function Families() {
             delay={0}
           />
           <div className="flex items-center justify-center py-2">
-            <span className="font-script text-6xl text-[#ecd08a] drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)] md:text-7xl">&amp;</span>
+            <span className="font-script text-6xl text-[#f3d98f] drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)] md:text-7xl">&amp;</span>
           </div>
           <Card
             role="The Groom"

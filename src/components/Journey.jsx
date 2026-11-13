@@ -82,7 +82,7 @@ export default function Journey() {
               style={{ fontSize: 'clamp(3.2rem, 9vw, 6.5rem)' }}
             >
               {'Together'.split('').map((l, i) => (
-                <motion.span key={i} variants={{ hide: { y: '115%', opacity: 0, rotate: 8 }, show: { y: '0%', opacity: 1, rotate: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block text-[#ecd08a] [text-shadow:0_2px_18px_rgba(0,0,0,0.55),0_0_28px_rgba(230,200,120,0.25)]">{l}</motion.span>
+                <motion.span key={i} variants={{ hide: { y: '115%', opacity: 0, rotate: 8 }, show: { y: '0%', opacity: 1, rotate: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block text-[#f3d98f] [text-shadow:0_2px_18px_rgba(0,0,0,0.55),0_0_28px_rgba(230,200,120,0.25)]">{l}</motion.span>
               ))}
             </motion.h2>
             <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6, duration: 0.8 }} className="mt-1 font-quote text-xl italic text-cream md:text-2xl">
